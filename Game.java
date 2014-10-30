@@ -15,20 +15,29 @@ public class Game {
 	printCopyright();
 
 	Adventurer[] players = makePlayerArray();
+    }
+
+    static boolean battle(Adventurer[] players) {
 	Adventurer opponent = makeOpponent();
 
 	boolean continueBattle = true;
 	while(continueBattle) {
-	    continueBattle = combat(players, opponent);
+	    continueBattle = round(players, opponent);
 	}
 
 	// End of match
 	printStats(players, opponent);
-	System.out.println(opponent.getName() + ": Until we meet again...");
+
+	System.out.print("Start another battle? (Y/N)");
+	if (key() == 'Y') {
+	    revive(players);
+	    return true;
+	}
+	return false;
     }
 
     // Returns true if the battle should continue, false if it should end
-    static boolean combat(Adventurer[] players, Adventurer opponent) {
+    static boolean round(Adventurer[] players, Adventurer opponent) {
 	printStats(players, opponent);
 
 	for (int i = 0; i < players.length; i++) {
@@ -194,33 +203,17 @@ public class Game {
 	System.out.println();
     }
 
+    static void revive(Adventurer[] party) {
+	for (int i = 0; i < party.length; i++) {
+	    // Adventurer template = p.getClass().getConstructor(String.class).newInstance("");
+	}
+    }
+
     static void printCopyright() {
 	System.out.println("Stuyablo(TM)");
 	System.out.println("Copyright (C) 2014 Aidan Fitzgerald");
-	System.out.println("For license details, go to the end of the file ");
-	System.out.println("Game.java in the source code.");
+	System.out.println("For license details, see the file 'LICENSE'.");
 	System.out.println();
     }
 
 }
-// The MIT License (MIT)
-
-// Copyright (c) 2014 Aidan Fitzgerald
-
-// Permission is hereby granted, free of charge, to any person obtaining a copy
-// of this software and associated documentation files (the "Software"), to deal
-// in the Software without restriction, including without limitation the rights
-// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-// copies of the Software, and to permit persons to whom the Software is
-// furnished to do so, subject to the following conditions:
-
-// The above copyright notice and this permission notice shall be included in
-// all copies or substantial portions of the Software.
-
-// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-// THE SOFTWARE.
