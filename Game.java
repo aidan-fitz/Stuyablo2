@@ -15,6 +15,9 @@ public class Game {
 	printCopyright();
 
 	Adventurer[] players = makePlayerArray();
+	boolean go = true;
+	while (go)
+	    go = battle(players);
     }
 
     static boolean battle(Adventurer[] players) {
@@ -205,7 +208,8 @@ public class Game {
 
     static void revive(Adventurer[] party) {
 	for (int i = 0; i < party.length; i++) {
-	    // Adventurer template = p.getClass().getConstructor(String.class).newInstance("");
+	    // bad@$$ way of resetting
+	    party[i] = party[i].getClass().getConstructor(String.class).newInstance(party[i].getName());
 	}
     }
 
