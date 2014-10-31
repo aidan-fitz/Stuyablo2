@@ -40,4 +40,9 @@ public class Rogue extends Adventurer {
 	}
     }
 
+    @Override
+    public String getStats() {
+	return super.getStats() + "\t" + getStamina() + " STAMINA";
+    }
+
 }

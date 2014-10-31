@@ -120,6 +120,7 @@ public class Game {
 	System.out.print("How many players do you want [2-4]? ");
 	Adventurer[] players;
 	int n = in.nextInt();
+	in.nextLine(); // discard
 	if (n >= 2 && n <= 4) {
 	    players = new Adventurer[n];
 	}
@@ -208,8 +209,15 @@ public class Game {
 
     static void revive(Adventurer[] party) {
 	for (int i = 0; i < party.length; i++) {
-	    // bad@$$ way of resetting
-	    party[i] = party[i].getClass().getConstructor(String.class).newInstance(party[i].getName());
+	    try {
+		// bad@$$ way of resetting
+		party[i] = party[i].getClass().getConstructor(String.class)
+		    .newInstance(party[i].getName());
+	    }
+	    catch (ReflectiveOperationException e) {
+		// if it fails, do a random class
+		party[i] = wildCard(party[i].getName());
+	    }
 	}
     }
 

@@ -2,7 +2,7 @@ public class Warrior extends Adventurer {
 
     public Warrior(String name) {
 	super(name);
-	setRage(12);
+	rage = 12;
     }
 
     private int rage;

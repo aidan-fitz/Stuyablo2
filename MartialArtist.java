@@ -1,7 +1,7 @@
 public class MartialArtist extends Adventurer {
 
     public MartialArtist(String mingzi) {
-	setName(mingzi);
+	super(mingzi);
 	setQi(18);
     }
 
@@ -46,6 +46,11 @@ public class MartialArtist extends Adventurer {
 	    qi -= 0.45;
 	    System.out.println(getName() + "\'s qi fell slightly...");
 	}
+    }
+
+    @Override
+    public String getStats() {
+	return super.getStats() + "\t" + getQi() + " QI";
     }
 
 }

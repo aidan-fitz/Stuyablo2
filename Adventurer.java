@@ -88,7 +88,8 @@ public abstract class Adventurer {
     public abstract void specialAttack(Adventurer target);
 
     public String getStats() {
-	return getName() + "\n" + getHP() + " HP\t" + getStrength() + " STR\t"
+	return getName() + " / " + getClass().getSimpleName() + "\n"
+	    + getHP() + " HP\t" + getStrength() + " STR\t"
 	    + getIntel() + " INT\t" + getDex() + " DEX";
     }
 

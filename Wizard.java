@@ -52,6 +52,6 @@ public class Wizard extends Adventurer {
 
     @Override
     public String getStats() {
-	return getStats() + "\tMana " + getMana();
+	return getStats() + "\t" + getMana() + " MANA";
     }
 }
