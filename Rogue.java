@@ -45,4 +45,16 @@ public class Rogue extends Adventurer {
 	return super.getStats() + "\t" + getStamina() + " STAMINA";
     }
 
+    @Override
+    public Rogue clone() {
+	Rogue miniMe = new Rogue(getName());
+	miniMe.setHP(getHP());
+	miniMe.setStrength(getStrength());
+	miniMe.setIntel(getIntel());
+	miniMe.setDex(getDex());
+	miniMe.setStamina(getStamina());
+	return miniMe;
+    }
+
+
 }

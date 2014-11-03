@@ -53,4 +53,15 @@ public class MartialArtist extends Adventurer {
 	return super.getStats() + "\t" + getQi() + " QI";
     }
 
+    @Override
+    public MartialArtist clone() {
+	MartialArtist miniMe = new MartialArtist(getName());
+	miniMe.setHP(getHP());
+	miniMe.setStrength(getStrength());
+	miniMe.setIntel(getIntel());
+	miniMe.setDex(getDex());
+	miniMe.setQi(getQi());
+	return miniMe;
+    }
+
 }

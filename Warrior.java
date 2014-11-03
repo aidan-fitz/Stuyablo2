@@ -2,7 +2,6 @@ public class Warrior extends Adventurer {
 
     public Warrior(String name) {
 	super(name);
-	rage = 12;
     }
 
     private int rage;
@@ -35,7 +34,7 @@ public class Warrior extends Adventurer {
 	System.out.println(getName() + " hacked at " + target.getName());
 	if (hit(target)) {
 	    target.takeDamage(damageCalc(4, target));
-	    rage--;
+	    setRage(getRage() - 1);
 	}
     }
 
@@ -78,6 +77,16 @@ public class Warrior extends Adventurer {
 	    System.out.println(getName() + " is enraged!");
 	// Rage increases with diminishing returns
 	rage += (int) Math.sqrt(damage);
+    }
+
+    @Override
+    public Warrior clone() {
+	Warrior miniMe = new Warrior(getName());
+	miniMe.setHP(getHP());
+	miniMe.setStrength(getStrength());
+	miniMe.setIntel(getIntel());
+	miniMe.setDex(getDex());
+	return miniMe;
     }
 
 }

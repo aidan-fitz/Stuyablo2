@@ -54,4 +54,16 @@ public class Wizard extends Adventurer {
     public String getStats() {
 	return getStats() + "\t" + getMana() + " MANA";
     }
+
+    @Override
+    public Wizard clone() {
+	Wizard miniMe = new Wizard(getName());
+	miniMe.setHP(getHP());
+	miniMe.setStrength(getStrength());
+	miniMe.setIntel(getIntel());
+	miniMe.setDex(getDex());
+	miniMe.setMana(getMana());
+	return miniMe;
+    }
+
 }
